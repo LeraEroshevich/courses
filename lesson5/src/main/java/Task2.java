@@ -26,6 +26,7 @@ public class Task2 {
             System.out.println(box.toString());
         }
         // Удаление всех ящиков с разным весом
+
         Set<Integer> weights = new HashSet<>();
         Iterator<HeavyBox> iterator = boxes.iterator();
         while (iterator.hasNext()) {
