@@ -3,11 +3,8 @@ import java.io.*;
 public class Task1 {
     public static void main(String[] args) {
         String fileName = "variant3.txt";
-        String filePath = "./" + fileName;
-
+        String filePath = "src/main/java/" + fileName;
         FileInputStream fis = null;
-        BufferedReader reader = null;
-
         try {
             fis = new FileInputStream("wrong/path/to/" + fileName);
         } catch (FileNotFoundException e) {
@@ -19,20 +16,15 @@ public class Task1 {
                 System.exit(0);
             }
         }
-
         try {
-            reader = new BufferedReader(new InputStreamReader(fis));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+            int content;
+            while ((content = fis.read()) != -1) {
+                System.out.print((char) content);
             }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
-                if (reader != null) {
-                    reader.close();
-                }
                 if (fis != null) {
                     fis.close();
                 }

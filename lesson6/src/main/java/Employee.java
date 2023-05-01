@@ -3,7 +3,8 @@ import java.io.Serializable;
 public class Employee implements Serializable {
     private String firstName;
     private String lastName;
-    private int age;
+    private transient  int age;
+
     public Employee(String firstName,String lastName, int age){
         this.firstName = firstName;
         this.lastName = lastName;
