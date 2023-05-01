@@ -1,0 +1,356 @@
+Index: lesson5/src/main/webapp/index.jsp
+===================================================================
+diff --git a/lesson5/src/main/webapp/index.jsp b/lesson5/src/main/webapp/index.jsp
+deleted file mode 100644
+--- a/lesson5/src/main/webapp/index.jsp	
++++ /dev/null	
+@@ -1,5 +0,0 @@
+-<html>
+-<body>
+-<h2>Hello World!</h2>
+-</body>
+-</html>
+Index: lesson5/pom.xml
+===================================================================
+diff --git a/lesson5/pom.xml b/lesson5/pom.xml
+deleted file mode 100644
+--- a/lesson5/pom.xml	
++++ /dev/null	
+@@ -1,30 +0,0 @@
+-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+-  <modelVersion>4.0.0</modelVersion>
+-  <groupId>org.example</groupId>
+-  <artifactId>lesson2</artifactId>
+-  <packaging>war</packaging>
+-  <dependencies>
+-    <dependency>
+-      <groupId>junit</groupId>
+-      <artifactId>junit</artifactId>
+-      <version>3.8.2</version>
+-    </dependency>
+-  </dependencies>
+-  <version>1.0-SNAPSHOT</version>
+-  <name>lesson2 Maven Webapp</name>
+-  <url>http://maven.apache.org</url>
+-  <build>
+-    <plugins>
+-      <plugin>
+-        <groupId>org.apache.maven.plugins</groupId>
+-        <artifactId>maven-compiler-plugin</artifactId>
+-        <version>3.8.0</version>
+-        <configuration>
+-          <source>11</source>
+-          <target>11</target>
+-        </configuration>
+-      </plugin>
+-    </plugins>
+-  </build>
+-</project>
+Index: lesson5/src/main/webapp/WEB-INF/web.xml
+===================================================================
+diff --git a/lesson5/src/main/webapp/WEB-INF/web.xml b/lesson5/src/main/webapp/WEB-INF/web.xml
+deleted file mode 100644
+--- a/lesson5/src/main/webapp/WEB-INF/web.xml	
++++ /dev/null	
+@@ -1,7 +0,0 @@
+-<!DOCTYPE web-app PUBLIC
+- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+-
+-<web-app>
+-  <display-name>Archetype Created Web Application</display-name>
+-</web-app>
+Index: lesson5/src/main/java/HeavyBox.java
+===================================================================
+diff --git a/lesson5/src/main/java/HeavyBox.java b/lesson5/src/main/java/HeavyBox.java
+deleted file mode 100644
+--- a/lesson5/src/main/java/HeavyBox.java	
++++ /dev/null	
+@@ -1,17 +0,0 @@
+-public class HeavyBox {
+-    private int weight;
+-    public HeavyBox(int weight) {
+-        this.weight = weight;
+-    }
+-    public int getWeight() {
+-        return weight;
+-    }
+-    public void setWeight(int weight) {
+-        this.weight = weight;
+-    }
+-    @Override
+-    public String toString() {
+-        return "HeavyBox weight=" + weight;
+-
+-    }
+-}
+Index: lesson5/src/main/java/Task2.java
+===================================================================
+diff --git a/lesson5/src/main/java/Task2.java b/lesson5/src/main/java/Task2.java
+deleted file mode 100644
+--- a/lesson5/src/main/java/Task2.java	
++++ /dev/null	
+@@ -1,43 +0,0 @@
+-import java.util.ArrayList;
+-import java.util.HashSet;
+-import java.util.Iterator;
+-import java.util.Set;
+-public class Task2 {
+-    public static void main (String[] args) {
+-        ArrayList<HeavyBox> boxes = new ArrayList<>();
+-        boxes.add(new HeavyBox(20));
+-        boxes.add(new HeavyBox(30));
+-        boxes.add(new HeavyBox(40));
+-        for (HeavyBox box : boxes) {
+-            System.out.println(box.toString());
+-        }
+-        boxes.get(0).setWeight(10); // Изменение веса первого ящика на 10.
+-        boxes.get(1).setWeight(boxes.get(0).getWeight()); // Установка веса второго ящика такой же как у первого.
+-        boxes.remove(boxes.size() - 2); // Удаление предпоследнего элемента
+-        // Первый способ
+-        HeavyBox[] boxesArray1 = boxes.toArray(new HeavyBox[boxes.size()]);
+-        for (HeavyBox box : boxesArray1) {
+-            System.out.println(box.toString());
+-        }
+-        // Второй способ
+-        HeavyBox[] boxesArray2 = new HeavyBox[boxes.size()];
+-        boxes.toArray(boxesArray2);
+-        for (HeavyBox box : boxesArray2) {
+-            System.out.println(box.toString());
+-        }
+-        // Удаление всех ящиков с разным весом
+-        Set<Integer> weights = new HashSet<>();
+-        Iterator<HeavyBox> iterator = boxes.iterator();
+-        while (iterator.hasNext()) {
+-            HeavyBox box = iterator.next();
+-            boolean result = weights.add(box.getWeight());
+-            System.out.println(result);
+-            if (result) {
+-                iterator.remove();
+-            }
+-        }
+-        for (HeavyBox box : boxes) {
+-            System.out.println(box.toString());
+-        }
+-    }
+-}
+Index: lesson5/src/main/java/Student.java
+===================================================================
+diff --git a/lesson5/src/main/java/Student.java b/lesson5/src/main/java/Student.java
+deleted file mode 100644
+--- a/lesson5/src/main/java/Student.java	
++++ /dev/null	
+@@ -1,73 +0,0 @@
+-import java.util.ArrayList;
+-import java.util.Iterator;
+-import java.util.List;
+-public class Student {
+-    private String name;
+-    private String group;
+-    private int course;
+-    private List<Integer> grades;
+-
+-    public Student(String name, String group, int course, List<Integer> grades) {
+-        this.name = name;
+-        this.group = group;
+-        this.course = course;
+-        this.grades = grades;
+-    }
+-
+-    public String getName() {
+-        return name;
+-    }
+-
+-    public String getGroup() {
+-        return group;
+-    }
+-
+-    public int getCourse() {
+-        return course;
+-    }
+-
+-    public List<Integer> getGrades() {
+-        return grades;
+-    }
+-
+-    public double getAverageGrade() {
+-        int sum = 0;
+-        for (Integer grade : grades) {
+-            sum += grade;
+-        }
+-        return (double) sum / grades.size();
+-    }
+-
+-    public static void main(String[] args) {
+-        List<Student> students = new ArrayList<>();
+-        students.add(new Student("Alice", "Group 1", 1, List.of(4, 3, 5)));
+-        students.add(new Student("Bob", "Group 2", 2, List.of(3, 2, 4)));
+-        students.add(new Student("Charlie", "Group 1", 1, List.of(2, 2, 2)));
+-        removeStudentsWithLowAverageGrade(students);
+-        promoteStudents(students);
+-        printStudents(students, 1);
+-    }
+-    public static void removeStudentsWithLowAverageGrade(List<Student> students) {
+-        Iterator<Student> iterator = students.iterator();
+-        while (iterator.hasNext()) {
+-            Student student = iterator.next();
+-            if (student.getAverageGrade() < 3.0) {
+-                iterator.remove();
+-            }
+-        }
+-    }
+-    public static void promoteStudents(List<Student> students) {
+-        for (Student student : students) {
+-            if (student.getAverageGrade() >= 3.0) {
+-                student.course++;
+-            }
+-        }
+-    }
+-    public static void printStudents(List<Student> students, int course) {
+-        for (Student student : students) {
+-            if (student.getCourse() == course) {
+-                System.out.println(student.getName());
+-            }
+-        }
+-    }
+-}
+\ No newline at end of file
+Index: lesson5/.gitignore
+===================================================================
+diff --git a/lesson5/.gitignore b/lesson5/.gitignore
+deleted file mode 100644
+--- a/lesson5/.gitignore	
++++ /dev/null	
+@@ -1,25 +0,0 @@
+-# Compiled class file
+-*.class
+-
+-# Log file
+-*.log
+-
+-# BlueJ files
+-*.ctxt
+-
+-# Mobile Tools for Java (J2ME)
+-.mtj.tmp/
+-
+-# Package Files #
+-*.jar
+-*.war
+-*.nar
+-*.ear
+-*.zip
+-*.tar.gz
+-*.rar
+-
+-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+-hs_err_pid*
+-.idea
+-/out/
+Index: lesson5/lesson2.iml
+===================================================================
+diff --git a/lesson5/lesson2.iml b/lesson5/lesson2.iml
+deleted file mode 100644
+--- a/lesson5/lesson2.iml	
++++ /dev/null	
+@@ -1,14 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5">
+-    <output url="file://$MODULE_DIR$/target/classes" />
+-    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+-    <content url="file://$MODULE_DIR$">
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+-      <excludeFolder url="file://$MODULE_DIR$/target" />
+-    </content>
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: lesson5/src/main/java/Variant1.java
+===================================================================
+diff --git a/lesson5/src/main/java/Variant1.java b/lesson5/src/main/java/Variant1.java
+deleted file mode 100644
+--- a/lesson5/src/main/java/Variant1.java	
++++ /dev/null	
+@@ -1,32 +0,0 @@
+-public class Variant1 {
+-  /*  Task 1
+-   ("Приведите пример, когда какая-либо коллекция выбрасывает UnsupportedOperationException.")
+-        Пример запишите ниже
+-        UnsupportedOperationException выбрасывается тогда, когда метод
+-        не поддерживается или не может быть выполнен в данном контексте. Пример:
+-        List<String> list = Arrays.asList("one", "two");
+-        list.add("three"); -  выбросит UnsupportedOperationException
+-
+-        Task 2
+-        Создать динамический массив, содержащий объекты класса HeavyBox.
+-        Переопределить метод toString у HeavyBox
+-        Распечатать его содержимое используя for each и метод toString.
+-        Изменить вес первого ящика на 10.
+-        Установить вес второго ящика такой же как у первого.
+-        Удалить предпоследний ящик.
+-        Получить массив содержащий ящики из коллекции двумя способами и вывести на консоль.
+-        Использовать java stream api запрещено
+-        Удалить все ящики с разным весом.
+-
+-        Task 3
+-        Создать класс Student, содержащий следующие характеристики – имя, группа, курс, оценки по предметам.
+-         Оценки должны быть в виде списка чисел.
+-        Создать коллекцию, содержащую объекты класса Student.
+-        Написать метод, который удаляет студентов со средним баллом <3.
+-        Если средний балл>=3, студент переводится на следующий курс.
+-        Напишите метод printStudents(List<Student> students, int course), который получает список студентов и номер курса.
+-        А также печатает на консоль имена тех студентов из списка, которые обучаются на данном курсе.
+-         */
+-
+-
+-}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"762560f2-7e60-4604-a1e8-ab1a275acbda\" name=\"Changes\" comment=\"delete gitignore\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lesson1/lesson1.iml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lesson2_p2/lesson2_p2.iml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lesson3p1/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lesson3p1/.idea/compiler.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lesson3p1/.idea/encodings.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lesson3p1/.idea/jarRepositories.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lesson3p1/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lesson3p1/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lesson3p1/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lesson3p1/src/main/webapp/WEB-INF/web.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lesson3p1/src/main/webapp/index.jsp\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2Nbo9EtOa3IPODhIfWxmHEiQORb\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"foldersAlwaysOnTop\" value=\"false\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"last_opened_file_path\": \"D:/QA/Projects/courses/lesson2_p2\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"762560f2-7e60-4604-a1e8-ab1a275acbda\" name=\"Changes\" comment=\"\" />\r\n      <created>1679941994200</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1679941994200</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"new\">\r\n      <created>1679942135333</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1679942135333</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"delete idea\">\r\n      <created>1680436237886</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1680436237886</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"delete gitignore\">\r\n      <created>1680436634809</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1680436634809</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"new\" />\r\n    <MESSAGE value=\"delete idea\" />\r\n    <MESSAGE value=\"delete gitignore\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"delete gitignore\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -39,13 +39,28 @@
+     <option name="foldersAlwaysOnTop" value="false" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "last_opened_file_path": "D:/QA/Projects/courses/lesson2_p2"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;D:/QA/Projects/courses/lesson2_p2&quot;
+   }
+-}]]></component>
++}</component>
++  <component name="RunManager">
++    <configuration default="true" type="JetRunConfigurationType">
++      <module name="courses" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
++      <module name="courses" />
++      <option name="filePath" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
