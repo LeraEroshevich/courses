@@ -4,7 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762560f2-7e60-4604-a1e8-ab1a275acbda" name="Changes" comment="delete lesson 5" />
+    <list default="true" id="762560f2-7e60-4604-a1e8-ab1a275acbda" name="Changes" comment="delete lesson 5">
+      <change beforePath="$PROJECT_DIR$/lesson4/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/java/Task1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/java/Task2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/java/Ticket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/java/TicketBus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/java/TicketCinema.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/java/TicketMuseum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/java/TicketNullException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/java/TicketTrain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/java/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/java/Variant2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson4/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/lesson2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/src/main/java/HeavyBox.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/src/main/java/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/src/main/java/Task2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/src/main/java/Variant1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson6/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson6/employee.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson6/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson6/src/main/java/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson6/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson6/src/main/java/Task1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson6/src/main/java/Task2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson6/src/main/java/Variant3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson6/src/main/java/task2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson6/src/main/java/variant3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson6/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson6/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson7/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lesson7/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson7/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson7/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lesson7/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson7/src/main/java/Task1.java" beforeDir="false" afterPath="$PROJECT_DIR$/lesson7/src/main/java/Task1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson7/src/main/java/Task2.java" beforeDir="false" afterPath="$PROJECT_DIR$/lesson7/src/main/java/Task2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson7/src/main/java/Task3.java" beforeDir="false" afterPath="$PROJECT_DIR$/lesson7/src/main/java/Task3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson7/src/main/java/Variant3.java" beforeDir="false" afterPath="$PROJECT_DIR$/lesson7/src/main/java/Variant3.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,13 +70,13 @@
     <option name="foldersAlwaysOnTop" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/QA/Projects/courses/lesson6"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/QA/Projects/courses/lesson6&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
