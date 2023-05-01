@@ -26,12 +26,13 @@ public class Task2 {
             System.out.println(box.toString());
         }
         // Удаление всех ящиков с разным весом
-
         Set<Integer> weights = new HashSet<>();
         Iterator<HeavyBox> iterator = boxes.iterator();
         while (iterator.hasNext()) {
             HeavyBox box = iterator.next();
-            if (!weights.add(box.getWeight())) {
+            boolean result = weights.add(box.getWeight());
+            System.out.println(result);
+            if (result) {
                 iterator.remove();
             }
         }
