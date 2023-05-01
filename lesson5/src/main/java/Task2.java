@@ -30,7 +30,9 @@ public class Task2 {
         Iterator<HeavyBox> iterator = boxes.iterator();
         while (iterator.hasNext()) {
             HeavyBox box = iterator.next();
-            if (!weights.add(box.getWeight())) {
+            boolean result = weights.add(box.getWeight());
+            System.out.println(result);
+            if (result) {
                 iterator.remove();
             }
         }
