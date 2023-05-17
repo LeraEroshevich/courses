@@ -1,24 +1,22 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Exchanger;
 
 public class MessageClientService implements Runnable {
-    private final ConcurrentLinkedQueue<String> queue;
+    private Exchanger<String> exchanger;
 
-    public MessageClientService(ConcurrentLinkedQueue<String> queue) {
-        this.queue = queue;
+    public MessageClientService(Exchanger<String> exchanger) {
+        this.exchanger = exchanger;
     }
 
     @Override
     public void run() {
-        while (true) {
-            if (!queue.isEmpty()) {
-                String message = queue.poll();
-                String formattedMessage = formatMessage(message);
-                System.out.println(formattedMessage);
-            }
+        try {
+            String receivedMessage = exchanger.exchange(null);
+            String processedMessage = new StringBuilder(receivedMessage).reverse().toString();
+            System.out.println("MessageClientService: Processed message: " + processedMessage);
+            exchanger.exchange(processedMessage);
         }
-    }
-
-    private String formatMessage(String message) {
-        return message.toUpperCase();
+        catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
