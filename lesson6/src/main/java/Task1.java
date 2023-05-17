@@ -1,4 +1,6 @@
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Task1 {
     public static void main(String[] args) {
@@ -7,13 +9,15 @@ public class Task1 {
         FileInputStream fis = null;
         try {
             fis = new FileInputStream("wrong/path/to/" + fileName);
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             System.out.println("File not found!");
             try {
                 fis = new FileInputStream(filePath);
-            } catch (FileNotFoundException ex) {
+            }
+            catch (FileNotFoundException ex) {
                 System.out.println("File not found even with correct path.");
-                System.exit(0);
+                return;
             }
         }
         try {
@@ -21,14 +25,17 @@ public class Task1 {
             while ((content = fis.read()) != -1) {
                 System.out.print((char) content);
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
-        } finally {
+        }
+        finally {
             try {
                 if (fis != null) {
                     fis.close();
                 }
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 e.printStackTrace();
             }
         }

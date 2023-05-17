@@ -1,10 +1,8 @@
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,7 +18,8 @@ public class Main {
             out.writeObject(employees);
             out.close();
             System.out.println("Serialized data is saved in employee.dat");
-        } catch (IOException i) {
+        }
+        catch (IOException i) {
             i.printStackTrace();
         }
     }
