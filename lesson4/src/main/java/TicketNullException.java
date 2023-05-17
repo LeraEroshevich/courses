@@ -1,5 +1,5 @@
-public class TicketNullException extends RuntimeException {
-    public TicketNullException() {
-        super("Билет не может быть null");
+public class TicketNullException extends Exception {
+    public TicketNullException(String message) {
+        super(message);
     }
 }
