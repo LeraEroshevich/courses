@@ -1,5 +1,5 @@
 public class Task2 {
-    static void task2() {
+    static void task2() throws TicketNullException {
         TicketTrain ticket1 = new TicketTrain();
         TicketBus ticket2 = new TicketBus();
         Ticket ticket3 = new Ticket();
