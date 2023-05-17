@@ -6,7 +6,7 @@ public class Task1 {
     public static void main(String[] args) {
         String fileName = "variant3.txt";
         String filePath = "src/main/java/" + fileName;
-        FileInputStream fis = null;
+        FileInputStream fis;
         try {
             fis = new FileInputStream("wrong/path/to/" + fileName);
         }
