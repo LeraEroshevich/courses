@@ -9,7 +9,7 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>lesson9</artifactId>
+	<artifactId>lesson4</artifactId>
 
 	<dependencies>
 		<dependency>

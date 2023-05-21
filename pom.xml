@@ -3,13 +3,24 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>courses</groupId>
-		<artifactId>projects</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</parent>
 
-	<artifactId>lesson9</artifactId>
+	<groupId>courses</groupId>
+	<artifactId>projects</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>lesson 2</module>
+		<module>lesson 2p2</module>
+		<module>lesson 3p1</module>
+		<module>lesson 3p2</module>
+		<module>lesson 4</module>
+		<module>lesson 5</module>
+		<module>lessson 6</module>
+		<module>lesson 6</module>
+		<module>lesson 7</module>
+		<module>lesson 8</module>
+		<module>lesson 9</module>
+	</modules>
 
 	<dependencies>
 		<dependency>
