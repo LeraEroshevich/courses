@@ -9,17 +9,17 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
-		<module>lesson 2</module>
-		<module>lesson 2p2</module>
-		<module>lesson 3p1</module>
-		<module>lesson 3p2</module>
-		<module>lesson 4</module>
-		<module>lesson 5</module>
-		<module>lessson 6</module>
-		<module>lesson 6</module>
-		<module>lesson 7</module>
-		<module>lesson 8</module>
-		<module>lesson 9</module>
+		<module>lesson1</module>
+		<module>lesson2</module>
+		<module>lesson2p2</module>
+		<module>lesson3p1</module>
+		<module>lesson3p2</module>
+		<module>lesson4</module>
+		<module>lesson5</module>
+		<module>lesson6</module>
+		<module>lesson7</module>
+		<module>lesson8</module>
+		<module>lesson9</module>
 	</modules>
 
 	<dependencies>
