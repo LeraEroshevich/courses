@@ -20,8 +20,9 @@ public class Task2 {
             products.get(i).setName(firstProductName);
         }
 
-        Map<String, Integer> productGroupsWithSum = products.stream().collect(Collectors.groupingBy(Product::getName,
-                                                                                                    Collectors.summingInt(Product::getProductId)));
+        Map<String, Integer> productGroupsWithSum = products.stream()
+            .collect(Collectors.groupingBy(Product::getName,
+                            Collectors.summingInt(Product::getProductId)));
 
         for (Map.Entry<String, Integer> entry : productGroupsWithSum.entrySet()) {
             System.out.println("Name: " + entry.getKey() + ", Sum of ProductId = " + entry.getValue());

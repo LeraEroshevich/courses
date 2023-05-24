@@ -20,8 +20,9 @@ public class Task3 {
             products.get(i).setProductId(firstProductId);
         }
 
-        Map<Integer, List<String>> productGroupsWithNames =
-            products.stream().collect(Collectors.groupingBy(Product::getProductId, Collectors.mapping(Product::getName, Collectors.toList())));
+        Map<Integer, List<String>> productGroupsWithNames = products
+            .stream().collect(Collectors.groupingBy(Product::getProductId,
+                                 Collectors.mapping(Product::getName, Collectors.toList())));
 
         for (Map.Entry<Integer, List<String>> entry : productGroupsWithNames.entrySet()) {
             System.out.println("ProductId: " + entry.getKey() + ", Names: " + entry.getValue());

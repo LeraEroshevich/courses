@@ -9,17 +9,18 @@ public class Task1 {
         products.add(new Product("Pear", 2));
         products.add(new Product("Strawberry", 3));
         products.add(new Product("Watermelon", 4));
-        products.get(1).getProductId();
-        products.get(products.size() - 1).setName(products.get(0).getName());
-        products.get(products.size() - 1).setName(products.get(0).getName());
 
-        List<String> sortedUniqueNames =
-            products.stream().filter(p -> p.getProductId() != 0).sorted((p1, p2) -> p1.getName().compareToIgnoreCase(p2.getName())).map(Product::getName).distinct()
-                .collect(Collectors.toList());
+        products.get(1).setProductId(0);
 
-        for (int i = sortedUniqueNames.size() - 1; i >= 0; i--) {
-            System.out.println(sortedUniqueNames.get(i));
+        String firstName = products.get(0).getName();
+        products.get(products.size() - 1).setName(firstName);
 
-        }
+        products.stream()
+            .filter(p -> p.getProductId() != 0)
+            .map(Product::getName)
+            .distinct()
+            .sorted(String::compareToIgnoreCase)
+            .forEach(name -> System.out.println(new StringBuilder(name).reverse()));
     }
 }
+
