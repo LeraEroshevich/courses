@@ -11,28 +11,24 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class TestTasks {
     private WebDriver driver;
+    private static ChromeOptions options;
 
     @BeforeAll
-    static void downloadDriver() {
-    }
-
-    @AfterEach
-    void closeBrowser() {
-        driver.close();
+    static void downloadDriver(){
+        WebDriverManager.chromedriver().setup();
+        options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
     }
 
     @BeforeEach
-    void prepareBrowser() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+    void startBrowser(){
         driver = new ChromeDriver(options);
     }
 
-   @Test
-    void Task1Test(){
-        WebDriver driver = new ChromeDriver();
-   }
+    @AfterEach
+    void closeDriver(){
+        driver.close();
+    }
 
    @Test
     void Task2Test(){
@@ -40,5 +36,13 @@ public class TestTasks {
        String currentUrl = driver.getCurrentUrl();
        Assertions.assertEquals("https://silverscreen.by/", currentUrl);
    }
+
+    @Test
+    void Task3Test(){
+        driver.get("https://silverscreen.by/");
+        String currentUrl = driver.getCurrentUrl();
+        Assertions.assertEquals("https://slverscreen.by/", currentUrl);
+    }
+
 
 }
