@@ -1,0 +1,91 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.xml.sax.SAXException;
+
+public class ParserXML {
+
+    private WebDriver driver;
+    private static ChromeOptions options;
+
+    @BeforeAll
+    static void downloadDriver(){
+        WebDriverManager.chromedriver().setup();
+        options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+    }
+
+    @BeforeEach
+    void startBrowser(){
+        driver = new ChromeDriver(options);
+    }
+
+    @AfterEach
+    void closeDriver(){
+        driver.close();
+    }
+
+    private String base = System.getProperty("user.dir");
+
+    @Test
+    void ParserXMLFile() throws ParserConfigurationException, SAXException, IOException {
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser parser = factory.newSAXParser();
+
+        EmployeeHandler handler = new EmployeeHandler();
+
+        parser.parse(new File(base + "/src/test/java/employee.xml"), handler);
+
+        List<String> companySites = handler.getCompanySites();
+        for (String companySite : companySites) {
+            driver.get(companySite);
+
+            String currentUrl = driver.getCurrentUrl();
+            Assertions.assertEquals(companySite, currentUrl);
+        }
+    }
+
+    @Test
+    void testInstanceOfCompanyEpam() {
+        EpamPage epamPage = new EpamPage();
+
+        Action returnedPage = epamPage.open("https://www.epam.com/");
+
+        Assertions.assertTrue(returnedPage instanceof EpamPage);
+    }
+
+    @Test
+    void testInstanceOfCompanyItransition() {
+        ItransitionPage itransitionPage = new ItransitionPage();
+
+        Action returnedPage = itransitionPage.open("https://www.itransition.com/");
+
+        Assertions.assertTrue(returnedPage instanceof ItransitionPage);
+    }
+
+    @Test
+    void testInstanceOfCompanyWargaming() {
+        WargamingPage wargamingPage = new WargamingPage();
+
+        Action returnedPage = wargamingPage.open("https://wargaming.com/en/");
+
+        Assertions.assertTrue(returnedPage instanceof WargamingPage);
+    }
+}
