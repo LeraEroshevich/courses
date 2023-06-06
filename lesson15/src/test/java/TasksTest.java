@@ -39,7 +39,7 @@ public class TasksTest {
     By searchTitleTwoLocator = By.xpath("//div[@id='wiki-body']//div[@class='markdown-body']//h1");
 
     @Test
-    void ImgInPngTest(){
+    void imgInPngTest(){
         driver.get("https://www.jenkins.io/");
         driver.manage().window().maximize();
         WebElement gridComponentsImg = driver.findElement(gridComponentsImgLocator);
@@ -48,7 +48,7 @@ public class TasksTest {
     }
 
     @Test
-    void CheckTextOutputAndCorrectLinkTest(){
+    void checkTextOutputAndCorrectLinkTest(){
         driver.get("https://rest-assured.io/");
         driver.manage().window().maximize();
         WebElement menuItemGrid = driver.findElement(By.xpath("//div[@id='main']//li[@class='p-docs']"));
@@ -59,16 +59,16 @@ public class TasksTest {
         jsExecutor.executeScript("arguments[0].click();",subMenuGrid);
 
         String searchTitle = driver.findElement(searchTitleLocator).getText();
-        boolean TextDisplayed = driver.findElement(searchTitleLocator).isDisplayed();
+        boolean textDisplayed = driver.findElement(searchTitleLocator).isDisplayed();
         Assertions.assertEquals("GettingStarted", searchTitle);
-        Assertions.assertTrue(TextDisplayed);
+        Assertions.assertTrue(textDisplayed);
 
         String currentUrl = driver.getCurrentUrl();
         Assertions.assertEquals("https://github.com/rest-assured/rest-assured/wiki/GettingStarted", currentUrl);
     }
 
     @Test
-    void CheckColumnsAndRowsInTableTest() {
+    void checkColumnsAndRowsInTableTest() {
         driver.get("https://rest-assured.io/");
         driver.manage().window().maximize();
         WebElement menuItemGrid = driver.findElement(By.xpath("//div[@id='main']//li[@class='p-docs']"));
@@ -79,9 +79,9 @@ public class TasksTest {
         jsExecutor.executeScript("arguments[0].click();", subMenuDownloads);
 
         String searchTitle = driver.findElement(searchTitleTwoLocator).getText();
-        boolean TextDisplayed = driver.findElement(searchTitleTwoLocator).isDisplayed();
+        boolean textDisplayed = driver.findElement(searchTitleTwoLocator).isDisplayed();
         Assertions.assertEquals("Downloads", searchTitle);
-        Assertions.assertTrue(TextDisplayed);
+        Assertions.assertTrue(textDisplayed);
 
         String currentUrl = driver.getCurrentUrl();
         Assertions.assertEquals("https://github.com/rest-assured/rest-assured/wiki/Downloads", currentUrl);
