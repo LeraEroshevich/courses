@@ -24,12 +24,25 @@ public class ParserXML {
 
     private WebDriver driver;
     private static ChromeOptions options;
+    private static List<String> companySites;
 
     @BeforeAll
     static void downloadDriver(){
         WebDriverManager.chromedriver().setup();
         options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+    }
+
+    @BeforeAll
+    static void setupCompanySites() throws ParserConfigurationException, SAXException, IOException {
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser parser = factory.newSAXParser();
+
+        EmployeeHandler handler = new EmployeeHandler();
+
+        parser.parse(new File(base + "/src/test/java/employee.xml"), handler);
+
+        companySites = handler.getCompanySites();
     }
 
     @BeforeEach
@@ -42,10 +55,10 @@ public class ParserXML {
         driver.close();
     }
 
-    private String base = System.getProperty("user.dir");
+    private static String base = System.getProperty("user.dir");
 
     @Test
-    void ParserXMLFile() throws ParserConfigurationException, SAXException, IOException {
+    void parserXMLFile() throws ParserConfigurationException, SAXException, IOException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
 
@@ -66,7 +79,7 @@ public class ParserXML {
     void testInstanceOfCompanyEpam() {
         EpamPage epamPage = new EpamPage();
 
-        Action returnedPage = epamPage.open("https://www.epam.com/");
+        Action returnedPage = epamPage.open(companySites.get(0));
 
         Assertions.assertTrue(returnedPage instanceof EpamPage);
     }
@@ -75,7 +88,7 @@ public class ParserXML {
     void testInstanceOfCompanyItransition() {
         ItransitionPage itransitionPage = new ItransitionPage();
 
-        Action returnedPage = itransitionPage.open("https://www.itransition.com/");
+        Action returnedPage = itransitionPage.open(companySites.get(1));
 
         Assertions.assertTrue(returnedPage instanceof ItransitionPage);
     }
@@ -84,7 +97,7 @@ public class ParserXML {
     void testInstanceOfCompanyWargaming() {
         WargamingPage wargamingPage = new WargamingPage();
 
-        Action returnedPage = wargamingPage.open("https://wargaming.com/en/");
+        Action returnedPage = wargamingPage.open(companySites.get(2));
 
         Assertions.assertTrue(returnedPage instanceof WargamingPage);
     }

@@ -1,3 +1,3 @@
-public interface Action {
-    Action open(String url);
+public interface Action<T extends Action<T>> {
+    T open(String url);
 }

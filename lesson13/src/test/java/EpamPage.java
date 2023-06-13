@@ -1,5 +1,5 @@
-public class EpamPage implements Action {
-    public Action open(String url) {
+public class EpamPage implements Action<EpamPage> {
+    public EpamPage open(String url) {
         return this;
     }
 }

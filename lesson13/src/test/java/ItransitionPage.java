@@ -1,5 +1,5 @@
-public class ItransitionPage implements Action {
-    public Action open(String url) {
+public class ItransitionPage implements Action<ItransitionPage> {
+    public ItransitionPage open(String url) {
         return this;
     }
 }
