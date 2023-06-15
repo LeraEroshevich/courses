@@ -1,4 +1,5 @@
 import java.time.Duration;
+import java.util.List;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -18,15 +19,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class TasksTest {
     private WebDriver driver;
     private static ChromeOptions options;
+    private static final String URL_JETBRAINS = "https://www.jetbrains.com/";
 
     @BeforeAll
     static void downloadDriver(){
         WebDriverManager.chromedriver().setup();
         options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-    }
-    public WebDriver getDriver() {
-        return driver;
     }
 
     @BeforeEach
@@ -45,6 +44,7 @@ public class TasksTest {
     By inputFieldLocator = By.xpath("//div[@class='search-box']//div[@data-testid='autocomplete']//input[@type='text']");
     By autocompleteElementLocator = By.xpath("//div[@data-testid='autocomplete-popup']//div[@data-index='1']");
     By ratingStarsLocator = By.xpath("//div[@class='wt-text-2 plugin-header__rate']//span[@class='test_plugin-header-rate']//span[@data-test='rate']");
+    By ratingStarLocator = By.xpath("//div[@class='wt-text-2 plugin-header__rate']//span[@class='test_plugin-header-rate']//span[@data-test='rate']//span[@data-test='rate-star']");
     By mainSubCodeMenuLocator = By.xpath("//nav[@data-test='main-menu']//div[@data-test='main-submenu']//a[@href='/code-with-me/']");
     By youtubePlayerBtnLocator = By.xpath("//div[@data-test='youtube-player']//div[@data-test='youtube-player-link']//button[@data-test='youtube-player-button']");
     By videoTitleLocator = By.xpath("//div[@id='player']//div[@id='movie_player']//a[@href='https://www.youtube.com/watch?v=Lq0fCMCK-Yw']");
@@ -54,7 +54,7 @@ public class TasksTest {
 
     @Test
     void checkRatingVisibility(){
-        driver.get("https://www.jetbrains.com/");
+        driver.get(URL_JETBRAINS);
         WebElement mainMenuItem = driver.findElement(mainMenuItemLocator);
         mainMenuItem.click();
 
@@ -72,11 +72,17 @@ public class TasksTest {
                     .until(ExpectedConditions.elementToBeClickable(ratingStarsLocator));
         boolean isDisplayed = ratingStars.isDisplayed();
         Assertions.assertTrue(isDisplayed, "Star rating not visible");
+
+        List<WebElement> starElements = ratingStars.findElements(ratingStarLocator);
+        Assertions.assertEquals(5, starElements.size(), "All star rating elements not visible");
+        for (WebElement starElement : starElements) {
+            Assertions.assertTrue(starElement.isDisplayed(), "Star rating element not visible");
+        }
     }
 
     @Test
     void checkHeaderVisibility(){
-        driver.get("https://www.jetbrains.com/");
+        driver.get(URL_JETBRAINS);
         WebElement mainMenuItem = driver.findElement(mainMenuItemLocator);
         mainMenuItem.click();
 
@@ -93,12 +99,13 @@ public class TasksTest {
 
         WebElement videoTitle = new WebDriverWait(driver, Duration.ofSeconds(15))
             .until(ExpectedConditions.elementToBeClickable(videoTitleLocator));
+        Assertions.assertTrue(videoTitle.isDisplayed(), "Video title is not displayed");
         Assertions.assertEquals("Introducing Code With Me - Collaborative Coding", videoTitle.getText());
     }
 
     @Test
     void logoInSvgTest(){
-        driver.get("https://www.jetbrains.com/");
+        driver.get(URL_JETBRAINS);
         WebElement mainMenuItem = driver.findElement(mainMenuItemLocator);
         mainMenuItem.click();
 
