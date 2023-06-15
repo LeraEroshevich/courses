@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -10,7 +9,6 @@ import javax.xml.parsers.SAXParserFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 
 public class EmployeeSAXParserTest {
 

@@ -76,27 +76,30 @@ public class ParserXML {
 
     @Test
     void testInstanceOfCompanyEpam() {
-        EpamPage epamPage = new EpamPage();
+        EpamPage epamPage = new EpamPage(driver);
 
-        Action returnedPage = epamPage.open(companySites.get(0));
+        String url = companySites.get(0);
+        EpamPage returnedPage = epamPage.open(url);
 
         Assertions.assertTrue(returnedPage instanceof EpamPage);
     }
 
     @Test
     void testInstanceOfCompanyItransition() {
-        ItransitionPage itransitionPage = new ItransitionPage();
+        ItransitionPage itransitionPage = new ItransitionPage(driver);
 
-        Action returnedPage = itransitionPage.open(companySites.get(1));
+        String url = companySites.get(1);
+        ItransitionPage returnedPage = itransitionPage.open(url);
 
         Assertions.assertTrue(returnedPage instanceof ItransitionPage);
     }
 
     @Test
     void testInstanceOfCompanyWargaming() {
-        WargamingPage wargamingPage = new WargamingPage();
+        WargamingPage wargamingPage = new WargamingPage(driver);
 
-        Action returnedPage = wargamingPage.open(companySites.get(2));
+        String url = companySites.get(2);
+        WargamingPage returnedPage = wargamingPage.open(url);
 
         Assertions.assertTrue(returnedPage instanceof WargamingPage);
     }

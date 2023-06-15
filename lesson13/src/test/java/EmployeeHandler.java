@@ -1,10 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import net.bytebuddy.asm.Advice;
 
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class EmployeeHandler extends DefaultHandler {
