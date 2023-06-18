@@ -23,7 +23,6 @@
 		<module>lesson10</module>
 		<module>lesson12</module>
 		<module>lesson14</module>
-		<module>Test</module>
 	</modules>
 
 	<dependencies>
