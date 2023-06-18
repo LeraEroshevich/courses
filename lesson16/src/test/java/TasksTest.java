@@ -42,15 +42,15 @@ public class TasksTest {
     By mainMenuItemLocator = By.xpath("//nav[@data-test='main-menu']//div[@data-test-marker='Developer Tools']");
     By mainSubMenuLocator = By.xpath("//nav[@data-test='main-menu']//div[@data-test='main-submenu']//a[@href='https://plugins.jetbrains.com/search?tags=Theme']");
     By inputFieldLocator = By.xpath("//div[@class='search-box']//div[@data-testid='autocomplete']//input[@type='text']");
-    By autocompleteElementLocator = By.xpath("//div[@data-testid='autocomplete-popup']//div[@data-index='1']");
-    By ratingStarsLocator = By.xpath("//div[@class='wt-text-2 plugin-header__rate']//span[@class='test_plugin-header-rate']//span[@data-test='rate']");
-    By ratingStarLocator = By.xpath("//div[@class='wt-text-2 plugin-header__rate']//span[@class='test_plugin-header-rate']//span[@data-test='rate']//span[@data-test='rate-star']");
+    By autocompleteElementLocator = By.xpath("//div[contains(@Class, 'autocomplete__item')]//div[@Class='autocomplete__element']");
+    By ratingStarsLocator = By.xpath("//span[@class='test_plugin-header-rate']//span[@data-test='rate']");
+    By ratingStarLocator = By.xpath("//span[@class='test_plugin-header-rate']//span[@data-test='rate']//span[@data-test='rate-star']");
     By mainSubCodeMenuLocator = By.xpath("//nav[@data-test='main-menu']//div[@data-test='main-submenu']//a[@href='/code-with-me/']");
     By youtubePlayerBtnLocator = By.xpath("//div[@data-test='youtube-player']//div[@data-test='youtube-player-link']//button[@data-test='youtube-player-button']");
     By videoTitleLocator = By.xpath("//div[@id='player']//div[@id='movie_player']//a[@href='https://www.youtube.com/watch?v=Lq0fCMCK-Yw']");
-    By iFrameLocator = By.xpath("//iframe[@src='https://www.youtube.com/embed/Lq0fCMCK-Yw?autoplay=true&rel=0&modestbranding=1&enablejsapi=1&origin=https%3A%2F%2Fwww.jetbrains.com&widgetid=3']");
-    By mainSubScalaMenuLocator = By.xpath("//nav[@data-test='main-menu']//div[@data-test='main-submenu']//a[@href='https://plugins.jetbrains.com/plugin/1347-scala']");
-    By gridComponentsImgLocator = By.xpath("//div[@class='wt-col-inline']//img[@alt='Plugin Logo']");
+    By iFrameLocator = By.xpath("//iframe");
+    By mainSubScalaMenuLocator = By.xpath("//nav[@data-test='main-menu']//div[@data-test='main-submenu']//span[text()='Scala']");
+    By gridComponentsImgLocator = By.xpath("//img[@alt='Plugin Logo']");
 
     @Test
     void checkRatingVisibility(){
@@ -64,10 +64,10 @@ public class TasksTest {
         WebElement inputField = driver.findElement(inputFieldLocator);
         inputField.sendKeys("Dracula Theme");
 
-        WebElement autocompleteElement = new WebDriverWait(driver, Duration.ofSeconds(30))
-                    .until(ExpectedConditions.elementToBeClickable(autocompleteElementLocator));
-        autocompleteElement.click();
-
+       WebElement autocompleteElement = new WebDriverWait(driver, Duration.ofSeconds(30))
+                   .until(ExpectedConditions.elementToBeClickable(autocompleteElementLocator));
+       autocompleteElement.click();
+       
         WebElement ratingStars = new WebDriverWait(driver, Duration.ofSeconds(30))
                     .until(ExpectedConditions.elementToBeClickable(ratingStarsLocator));
         boolean isDisplayed = ratingStars.isDisplayed();
