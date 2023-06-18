@@ -67,7 +67,7 @@ public class TasksTest {
        WebElement autocompleteElement = new WebDriverWait(driver, Duration.ofSeconds(30))
                    .until(ExpectedConditions.elementToBeClickable(autocompleteElementLocator));
        autocompleteElement.click();
-       
+
         WebElement ratingStars = new WebDriverWait(driver, Duration.ofSeconds(30))
                     .until(ExpectedConditions.elementToBeClickable(ratingStarsLocator));
         boolean isDisplayed = ratingStars.isDisplayed();
