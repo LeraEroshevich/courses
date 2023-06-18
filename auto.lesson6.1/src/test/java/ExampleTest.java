@@ -17,7 +17,6 @@ public class ExampleTest {
     @MethodSource("testData")
     public void testStringLength(String firstValue, String secondValue) {
         Assertions.assertTrue(firstValue.length() > secondValue.length(),
-                              "Длина первого значения набора должна быть больше длины второго значения");
-
+                              "Длинна первого значение набора,больше длины значения второй строки этого же набора");
     }
 }
