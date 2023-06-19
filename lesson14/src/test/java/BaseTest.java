@@ -8,8 +8,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
-    private static ChromeOptions options;
-    private WebDriver driver;
+    public static ChromeOptions options;
+    public WebDriver driver;
 
     @BeforeAll
     static void downloadDriver() {
@@ -32,4 +32,5 @@ public class BaseTest {
     void closeDriver() {
         driver.close();
     }
+
 }

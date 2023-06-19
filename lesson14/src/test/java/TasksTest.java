@@ -1,13 +1,76 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class TasksTest extends BaseTest{
-    static ChromeOptions options;
-    private WebDriver driver;
+    String currentDir = System.getProperty("user.dir");
+    String filePath = "file://" + currentDir + "/src/main/resources/index.html";
+
     @Test
     void inputFieldValidationTest(){
-       // String formPageUrl = "file:///src/main/resources/index.html";
-        driver.get("file:///D:/QA/Projects/courses/lesson14/src/main/resources/index.html");
+        driver.get(filePath);
+
+        String value = "123456789qwertyuiopasdfghjklzxcv";
+        driver.findElement(By.name("Name")).sendKeys(value);
+        Assertions.assertTrue(driver.findElement(By.name("Name")).getAttribute("value").length() <= 30,
+                              "The length of the value in the exceed field is 30 characters");
+
+        String passwordValue = "Password";
+        WebElement passwordField = PageObject.enterPassword(driver, passwordValue);
+        Assertions.assertEquals(passwordValue, passwordField.getAttribute("value"),
+                                "The text in the field does not match the entered value");
+        Assertions.assertEquals("password", passwordField.getAttribute("type"),
+                                "Field type is not equal to 'password'");
+    }
+
+    @Test
+    void checkTextAndCheckboxesTest(){
+        driver.get(filePath);
+
+        String pageTitle = driver.getTitle();
+        Assertions.assertEquals("Variant 4", pageTitle);
+
+        Assertions.assertEquals("Name", driver.findElement(By.xpath("//label[text()='Name']")).getText());
+        Assertions.assertEquals("Password", driver.findElement(By.xpath("//label[text()='Password']")).getText());
+
+        Assertions.assertEquals("rgba(0, 0, 255, 1)", driver.findElement(By.xpath("//a[@class='button']"))
+            .getCssValue("color"));
+
+        WebElement checkboxesDiv = driver.findElement(By.className("checkboxes"));
+        WebElement[] checkboxes = checkboxesDiv.findElements(By.xpath(".//input[@type='checkbox']")).toArray(new WebElement[0]);
+
+        Assertions.assertEquals(5, checkboxes.length);
+        Assertions.assertTrue(checkboxes[0].isSelected());
+        Assertions.assertFalse(checkboxes[1].isSelected());
+        Assertions.assertFalse(checkboxes[2].isSelected());
+        Assertions.assertTrue(checkboxes[3].isSelected());
+        Assertions.assertTrue(checkboxes[4].isSelected());
+    }
+
+    @Test
+    void checkingInputAndCalendar(){
+        driver.get(filePath);
+
+        String passwordValue = "Password";
+        WebElement passwordField = PageObject.enterPassword(driver, passwordValue);
+        Assertions.assertEquals(passwordValue, passwordField.getAttribute("value"),
+                                "The text in the field does not match the entered value");
+        Assertions.assertEquals("password", passwordField.getAttribute("type"),
+                                "Field type is not equal to 'password'");
+
+        String firstFieldValue = driver.findElement(By.name("Name")).getAttribute("value");
+        Assertions.assertEquals("", firstFieldValue);
+
+        String expectedDate = "01.01.2023";
+        driver.findElement(By.name("Calendar")).sendKeys(expectedDate);
+        String dateFieldValue = driver.findElement(By.name("Calendar")).getAttribute("value");
+        Assertions.assertEquals(expectedDate, dateFieldValue, "The date in the field does not match the expected date");
+
+        WebElement button = driver.findElement(By.xpath("//a[@class='button']"));
+        button.click();
+
+        String currentUrl = driver.getCurrentUrl();
+        Assertions.assertEquals("https://metanit.com/web/html5/5.1.php", currentUrl, "Текущий URL не соответствует ожидаемому");
     }
 }
