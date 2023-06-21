@@ -32,9 +32,6 @@ public class TasksTest {
     void startBrowser(){
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        // Инициализация WebDriver
-        System.setProperty("webdriver.chrome.driver", "путь_к_драйверу_chrome");
-        driver = new ChromeDriver();
     }
 
     @AfterEach
