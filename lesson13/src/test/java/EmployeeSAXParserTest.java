@@ -14,7 +14,9 @@ public class EmployeeSAXParserTest {
 
     @Test
     void testLastEmployeeJobsInDifferentRooms() throws ParserConfigurationException, SAXException, IOException {
-        File xmlFile = new File("/src/test/java/employee.xml");
+
+        String currentDir = System.getProperty("user.dir");
+        String xmlFile = currentDir + "/src/test/java/employee.xml";
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
