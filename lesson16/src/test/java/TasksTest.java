@@ -42,7 +42,6 @@ public class TasksTest {
     By mainMenuItemLocator = By.xpath("//nav[@data-test='main-menu']//div[@data-test-marker='Developer Tools']");
     By mainSubMenuLocator = By.xpath("//nav[@data-test='main-menu']//div[@data-test='main-submenu']//a[@href='https://plugins.jetbrains.com/search?tags=Theme']");
     By inputFieldLocator = By.xpath("//div[@class='search-box']//div[@data-testid='autocomplete']//input[@type='text']");
-    //By autocompleteElementLocator = By.xpath("//div[contains(@Class, 'autocomplete__item')]//div[@Class='autocomplete__element']");
     By ratingStarsLocator = By.xpath("//span[@class='test_plugin-header-rate']//span[@data-test='rate']");
     By ratingStarLocator = By.xpath("//span[@class='test_plugin-header-rate']//span[@data-test='rate']//span[@data-test='rate-star']");
     By mainSubCodeMenuLocator = By.xpath("//nav[@data-test='main-menu']//div[@data-test='main-submenu']//a[@href='/code-with-me/']");
@@ -51,12 +50,8 @@ public class TasksTest {
     By iFrameLocator = By.xpath("//iframe");
     By mainSubScalaMenuLocator = By.xpath("//nav[@data-test='main-menu']//div[@data-test='main-submenu']//span[text()='Scala']");
     By gridComponentsImgLocator = By.xpath("//img[@alt='Plugin Logo']");
-     By autocompleteItemLocator = By.xpath("//div[contains(@class, 'autocomplete__item')]");
-     By autocompleteElementLocator = By.xpath(".//div[contains(@class, 'autocomplete__element')]");
-
-    public TasksTest(WebDriver driver) {
-        this.driver = driver;
-    }
+    By autocompleteItemLocator = By.xpath("//div[contains(@class, 'autocomplete__item')]");
+    By autocompleteElementLocator = By.xpath(".//div[contains(@class, 'autocomplete__element')]");
 
     public WebElement findAutocompleteElementByText(String findText) {
         List<WebElement> autocompleteItems = new WebDriverWait(driver, Duration.ofSeconds(5))
