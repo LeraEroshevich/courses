@@ -22,7 +22,9 @@
 		<module>lesson9</module>
 		<module>lesson10</module>
 		<module>lesson12</module>
-		<module>lesson13</module>
+        <module>lesson13</module>
+		<module>lesson15</module>
+		<module>auto.lesson6.1</module>
 	</modules>
 
 	<dependencies>
