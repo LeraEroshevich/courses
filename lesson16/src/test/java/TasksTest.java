@@ -70,7 +70,6 @@ public class TasksTest {
         }
         return null;
     }
-
     @Test
     void checkRatingVisibility() {
         driver.get(URL_JETBRAINS);
@@ -83,8 +82,7 @@ public class TasksTest {
         WebElement inputField = driver.findElement(inputFieldLocator);
         inputField.sendKeys("Dracula Theme");
 
-        WebElement autocompleteElement = new WebDriverWait(driver, Duration.ofSeconds(30))
-            .until(ExpectedConditions.elementToBeClickable(autocompleteElementLocator));
+        WebElement autocompleteElement = findAutocompleteElementByText("Dracula Theme");
         autocompleteElement.click();
 
         WebElement ratingStars = new WebDriverWait(driver, Duration.ofSeconds(30))
