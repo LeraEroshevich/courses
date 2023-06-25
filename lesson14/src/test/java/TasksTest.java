@@ -1,6 +1,8 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import constants.Colors;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -21,7 +23,7 @@ public class TasksTest extends BaseTest{
                               "The length of the value in the exceed field is 30 characters");
 
         String passwordValue = "Password";
-        PageObject pageObject = new PageObject(driver);
+        PageLogin pageObject = new PageLogin(driver);
         WebElement passwordField = pageObject.enterPassword(passwordValue);
         Assertions.assertEquals(passwordValue, passwordField.getAttribute("value"),
                                 "The text in the field does not match the entered value");
@@ -57,7 +59,7 @@ public class TasksTest extends BaseTest{
     void checkingInputAndCalendar() {
         driver.get(filePath);
 
-        PageObject pageObject = new PageObject(driver);
+        PageLogin pageObject = new PageLogin(driver);
 
         String passwordValue = "Password";
         WebElement passwordField = pageObject.enterPassword(passwordValue);
