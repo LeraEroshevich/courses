@@ -20,10 +20,6 @@ public class BaseTest {
         options.addArguments("--remote-allow-origins=*");
     }
 
-    public WebDriver getDriver() {
-        return driver;
-    }
-
     @BeforeMethod
     void startBrowser() {
         driver = new ChromeDriver(options);

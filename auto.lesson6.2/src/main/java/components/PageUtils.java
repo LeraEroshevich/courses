@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 public class PageUtils {
     private WebDriver driver;
@@ -23,5 +24,12 @@ public class PageUtils {
     public PageUtils clickDeveloperToolsMenu() {
         getDeveloperToolsMenu().click();
         return this;
+    }
+    public void verifyImageNativeSize(WebElement image, int expectedWidth, int expectedHeight) {
+        int nativeWidth = Integer.parseInt(image.getAttribute("naturalWidth"));
+        int nativeHeight = Integer.parseInt(image.getAttribute("naturalHeight"));
+
+        Assert.assertEquals(nativeWidth, expectedWidth, "Incorrect image native width");
+        Assert.assertEquals(nativeHeight, expectedHeight, "Incorrect image native height");
     }
 }
