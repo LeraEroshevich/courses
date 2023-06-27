@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="9" passed="9" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-06-27T18:27:24 MSK" name="QA Suite" finished-at="2023-06-27T18:27:35 MSK" duration-ms="11152">
+    <groups>
+    </groups>
+    <test started-at="2023-06-27T18:27:24 MSK" name="Variant 2" finished-at="2023-06-27T18:27:35 MSK" duration-ms="11152">
+      <class name="JetBrainsTests">
+        <test-method is-config="true" signature="downloadDriver()[pri:0, instance:JetBrainsTests@32eff876]" started-at="2023-06-27T18:27:24 MSK" name="downloadDriver" finished-at="2023-06-27T18:27:25 MSK" duration-ms="914" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- downloadDriver -->
+        <test-method is-config="true" signature="startBrowser()[pri:0, instance:JetBrainsTests@32eff876]" started-at="2023-06-27T18:27:25 MSK" name="startBrowser" finished-at="2023-06-27T18:27:26 MSK" duration-ms="1485" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startBrowser -->
+        <test-method signature="cookieTextCheckTest()[pri:0, instance:JetBrainsTests@32eff876]" started-at="2023-06-27T18:27:26 MSK" name="cookieTextCheckTest" finished-at="2023-06-27T18:27:29 MSK" duration-ms="2700" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cookieTextCheckTest -->
+        <test-method is-config="true" signature="closeDriver()[pri:0, instance:JetBrainsTests@32eff876]" started-at="2023-06-27T18:27:29 MSK" name="closeDriver" finished-at="2023-06-27T18:27:29 MSK" duration-ms="89" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeDriver -->
+        <test-method is-config="true" signature="startBrowser()[pri:0, instance:JetBrainsTests@32eff876]" started-at="2023-06-27T18:27:29 MSK" name="startBrowser" finished-at="2023-06-27T18:27:30 MSK" duration-ms="784" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startBrowser -->
+        <test-method signature="imageSizeCheckTest()[pri:0, instance:JetBrainsTests@32eff876]" started-at="2023-06-27T18:27:30 MSK" name="imageSizeCheckTest" finished-at="2023-06-27T18:27:32 MSK" duration-ms="2195" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- imageSizeCheckTest -->
+        <test-method is-config="true" signature="closeDriver()[pri:0, instance:JetBrainsTests@32eff876]" started-at="2023-06-27T18:27:32 MSK" name="closeDriver" finished-at="2023-06-27T18:27:32 MSK" duration-ms="82" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeDriver -->
+        <test-method is-config="true" signature="startBrowser()[pri:0, instance:JetBrainsTests@32eff876]" started-at="2023-06-27T18:27:32 MSK" name="startBrowser" finished-at="2023-06-27T18:27:33 MSK" duration-ms="822" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startBrowser -->
+        <test-method signature="videoTitleCheckTest()[pri:0, instance:JetBrainsTests@32eff876]" started-at="2023-06-27T18:27:33 MSK" name="videoTitleCheckTest" finished-at="2023-06-27T18:27:35 MSK" duration-ms="1951" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- videoTitleCheckTest -->
+        <test-method is-config="true" signature="closeDriver()[pri:0, instance:JetBrainsTests@32eff876]" started-at="2023-06-27T18:27:35 MSK" name="closeDriver" finished-at="2023-06-27T18:27:35 MSK" duration-ms="81" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeDriver -->
+      </class> <!-- JetBrainsTests -->
+      <class name="NumberTest">
+        <test-method signature="testNumberGreaterThanZero(int)[pri:0, instance:NumberTest@7c729a55]" started-at="2023-06-27T18:27:35 MSK" name="testNumberGreaterThanZero" data-provider="numbers" finished-at="2023-06-27T18:27:35 MSK" duration-ms="4" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNumberGreaterThanZero -->
+        <test-method signature="testNumberGreaterThanZero(int)[pri:0, instance:NumberTest@7c729a55]" started-at="2023-06-27T18:27:35 MSK" name="testNumberGreaterThanZero" data-provider="numbers" finished-at="2023-06-27T18:27:35 MSK" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNumberGreaterThanZero -->
+        <test-method signature="testNumberGreaterThanZero(int)[pri:0, instance:NumberTest@7c729a55]" started-at="2023-06-27T18:27:35 MSK" name="testNumberGreaterThanZero" data-provider="numbers" finished-at="2023-06-27T18:27:35 MSK" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNumberGreaterThanZero -->
+        <test-method signature="testNumberGreaterThanZero(int)[pri:0, instance:NumberTest@7c729a55]" started-at="2023-06-27T18:27:35 MSK" name="testNumberGreaterThanZero" data-provider="numbers" finished-at="2023-06-27T18:27:35 MSK" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNumberGreaterThanZero -->
+      </class> <!-- NumberTest -->
+      <class name="StringLengthTest">
+        <test-method signature="testStringLength(java.lang.String,java.lang.String)[pri:0, instance:StringLengthTest@3bb9a3ff]" started-at="2023-06-27T18:27:35 MSK" name="testStringLength" data-provider="stringData" finished-at="2023-06-27T18:27:35 MSK" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[tested]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[test]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testStringLength -->
+        <test-method signature="testStringLength(java.lang.String,java.lang.String)[pri:0, instance:StringLengthTest@3bb9a3ff]" started-at="2023-06-27T18:27:35 MSK" name="testStringLength" data-provider="stringData" finished-at="2023-06-27T18:27:35 MSK" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[testing]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[tester]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testStringLength -->
+      </class> <!-- StringLengthTest -->
+    </test> <!-- Variant 2 -->
+  </suite> <!-- QA Suite -->
+</testng-results>
