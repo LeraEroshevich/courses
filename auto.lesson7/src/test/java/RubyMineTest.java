@@ -11,8 +11,8 @@ public class RubyMineTest extends BaseTest{
             .open("https://www.jetbrains.com/")
             .getHeader()
             .clickDeveloperTools()
-            .clickRubyMineItem()
-            .getText
+            .clickRubyMineItem();
+
 
 
     }
