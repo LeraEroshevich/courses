@@ -26,6 +26,7 @@
 		<module>lesson15</module>
 		<module>auto.lesson6.1</module>
 		<module>lesson16</module>
+		<module>auto.lesson8.1</module>
 	</modules>
 
 	<dependencies>
