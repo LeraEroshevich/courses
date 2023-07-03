@@ -16,6 +16,5 @@ public class RubyMineTest extends BaseTest{
 
         String titleText = rubyminePage.getTextRubyMine();
         Assertions.assertEquals(titleText, "The Most Intelligent Ruby and Rails IDE ");
-
     }
 }
