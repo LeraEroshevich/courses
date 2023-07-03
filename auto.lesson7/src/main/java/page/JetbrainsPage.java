@@ -16,11 +16,11 @@ public class JetbrainsPage {
         this.driver = driver;
     }
 
-    public Header getHeader() {
-        return new Header(driver);
-    }
+    public Header getHeader() {return new Header(driver);
+   }
+
     public JetbrainsPage open(String url){
         driver.get(url);
-        return this;
+        return new JetbrainsPage(driver);
     }
 }

@@ -1,32 +1,32 @@
 package component;
 
-import org.openqa.selenium.By;
+import page.RubyMinePage;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class Header {
 
     private WebDriver driver;
-
-    private By developerToolsLocator = By.xpath("//body//nav[@data-test='main-menu']//button[@aria-label='Developer Tools: Open submenu']");
-    private By RubyMineItemLocator = By.xpath("//nav[@data-test='main-menu']//div[@data-test-marker='Developer Tools']//div[@data-test='main-submenu']//div[@data-test='main-submenu-item']//a[@href='/ruby/']");
-
-    public WebElement getDeveloperTools() {
-        return driver.findElement(developerToolsLocator);
-    }
-    public Header clickDeveloperTools() {
-        getDeveloperTools().click();
-        return this;
-    }
-    public WebElement getRubyMineItem() {
-        return driver.findElement(RubyMineItemLocator);
-    }
-    public Header clickRubyMineItem() {
-        getRubyMineItem().click();
-        return this;
-    }
-
     public Header(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    @FindBy(xpath = "//body//nav[@data-test='main-menu']//button[@aria-label='Developer Tools: Open submenu']")
+    private WebElement developerTools;
+    @FindBy(xpath = "//nav[@data-test='main-menu']//div[@data-test-marker='Developer Tools']//div[@data-test='main-submenu']//div[@data-test='main-submenu-item']//a[@href='/ruby/']")
+    private WebElement RubyMi;
+
+    public Header clickDeveloperTools() {
+        developerTools.click();
+        return new Header(driver);
+    }
+
+    public RubyMinePage clickRubyMineItem() {
+        RubyMi.click();
+        return new RubyMinePage(driver);
     }
 }
