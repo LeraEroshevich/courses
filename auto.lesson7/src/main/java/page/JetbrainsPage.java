@@ -3,17 +3,11 @@ package page;
 import component.Header;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class JetbrainsPage {
     private WebDriver driver;
 
     public JetbrainsPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
-
-    public void JetBrainsPage(WebDriver driver) {
         this.driver = driver;
     }
 

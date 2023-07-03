@@ -14,17 +14,18 @@ public class PyCharmPage {
 
     private WebDriver driver;
     @FindBy(xpath = "//div[@id='overview-info']//div[@id='python-take-a-tour-video']//button[@data-test='button']")
-    private WebElement BtnTakeVideo;
+    private WebElement btnTakeVideo;
     private By textVideoTitleLocator = By.xpath("Какой то путь");
     @FindBy(xpath = "//div[@class='wt-container']//div[@class='overview-header__download button-with-note']//a[@href='/pycharm/download/']")
-    private WebElement DownloadButton;
+    private WebElement downloadButton;
+
     public PyCharmPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
     public PyCharmPage clickBtnTakeVideo() {
-        BtnTakeVideo.click();
+        btnTakeVideo.click();
         return new PyCharmPage(driver);
     }
 
@@ -36,6 +37,6 @@ public class PyCharmPage {
     }
 
     public WebElement getDownloadButton() {
-        return DownloadButton;
+        return downloadButton;
     }
 }
