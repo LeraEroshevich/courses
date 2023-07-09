@@ -43,6 +43,7 @@ public class TasksTest {
 
     @Test
     void getUnknownDataTest() {
+        RestAssured.baseURI = "https://reqres.in/api";
         UnknownResponse response = get("/unknown")
             .then()
             .statusCode(200)
