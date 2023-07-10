@@ -1,8 +1,6 @@
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static page.HomePage.RELAX_BY_URL;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
 
 import page.DropDown;
 import page.HomePage;
@@ -13,14 +11,13 @@ public class RelaxByTests {
 
     @Test
     void checkPhotoExtensionTest() {
-        new HomePage()
-            .open(RELAX_BY_URL)
+        HomePage homePage = new HomePage()
+        .openHomePage();
+
+        DropDown dropDown = homePage
             .getHeader()
             .clickPhotoReportItem();
-
-        DropDown photoReportPage = new DropDown();
-        SelenideElement photoIcon = photoReportPage.getPhotoIcon();
-        String iconUrl = photoIcon.getAttribute("style");
+        String iconUrl = dropDown.getPhotoIconStyle();
 
         assertTrue(iconUrl.contains(".svg"));
     }
@@ -28,7 +25,7 @@ public class RelaxByTests {
     @Test
     void checkPhotoBtnTest() {
         new HomePage()
-            .open(RELAX_BY_URL)
+            .openHomePage()
             .getHeader()
             .clickPhotoReportItem()
             .getPhotoBtn()
