@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<company>
+	<name>Stormnet</name>
+	<offices>
+		<office floor="1" room="2">
+			<employees>
+				<employee name="Ivan" job="Junior" companySite="https://www.itransition.com/" />
+				<employee name="Anton" job="Middle" companySite="https://www.epam.com/" />
+				<employee name="Oleg" job="Senior" companySite="https://wargaming.com/en/" />
+			</employees>
+		</office>
+	</offices>
+</company>
