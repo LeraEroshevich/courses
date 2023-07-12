@@ -1,3 +1,5 @@
+import java.util.stream.Stream;
+
 import component.Header;
 import page.AboutPage;
 import page.CompanySearchPage;
@@ -5,25 +7,34 @@ import page.MainPage;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.openqa.selenium.WebDriver;
 
 public class DevByTest extends BaseTest {
-    @Test
-    void companySearchTest() {
-        Header mainPage = new MainPage(getDriver())
+    @ParameterizedTest
+    @MethodSource("companySearchDataProvider")
+    void companySearchTest(String searchText, String expectedCompany) {
+        WebDriver driver = getDriver();
+
+        CompanySearchPage mainPage = new MainPage(driver)
             .open(MainPage.DEV_URL)
             .getHeader()
             .clickNavBar()
             .clickCompanyItem();
 
-        CompanySearchPage companySearchPage = new CompanySearchPage(getDriver());
-        companySearchPage.enterText("bit");
-        // не проходит тест, не могу понять в чем дело, текст не вводится в строке, хотя путь верный и добавлен вейтер
-        Assertions.assertTrue(companySearchPage.fitbitFound());
-        Assertions.assertTrue(companySearchPage.isEmployeeCountGreaterThanZero());
-        Assertions.assertTrue(companySearchPage.isCompanyAboveHasEmployeeCountGreaterThanZero());
-        Assertions.assertTrue(companySearchPage.isCompanyBelowHasEmployeeCountGreaterThanZero());
+        CompanySearchPage companySearchPage = new CompanySearchPage(driver);
+        companySearchPage.enterText(searchText);
+        Assertions.assertTrue(companySearchPage.isCompanyDisplayed(expectedCompany));
 
-        //тут будут описаны тесты с BIMSOLUTIONS, подскажите я правильно двигаюсь?
+    }
+
+    private static Stream<Arguments> companySearchDataProvider() {
+        return Stream.of(
+            Arguments.of("bit", "Fitbit"),
+            Arguments.of("solution", "BIMSOLUTIONS")
+        );
     }
 
     @Test

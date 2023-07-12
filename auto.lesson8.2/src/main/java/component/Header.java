@@ -1,5 +1,7 @@
 package component;
 
+import page.CompanySearchPage;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,9 +26,9 @@ public class Header {
         return new Header(driver);
     }
 
-    public Header clickCompanyItem() {
+    public CompanySearchPage clickCompanyItem() {
         companyItem.click();
-        return new Header(driver);
+        return new CompanySearchPage(driver);
     }
     public Header clickAboutItem() {
         aboutItem.click();

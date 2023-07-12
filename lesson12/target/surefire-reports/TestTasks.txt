@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TestTasks
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 7.925 s <<< FAILURE! - in TestTasks
+TestTasks.Task3Test  Time elapsed: 3.446 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <https://slverscreen.by/> but was: <https://silverscreen.by/>
+	at TestTasks.Task3Test(TestTasks.java:44)
+
