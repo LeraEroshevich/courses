@@ -1,23 +1,38 @@
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.stream.Stream;
+
 import page.HomePage;
 import page.ShowPage;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
+@Execution(ExecutionMode.CONCURRENT)
 public class RelaxByTask1Test {
 
-    @Test
-    @Execution(ExecutionMode.CONCURRENT)
+    @ParameterizedTest
+    @MethodSource("showTypesProvider")
     void checkShowTitleTest(String showType, String expectedTitle) {
-        HomePage homePage = new HomePage();
-        homePage.openHomePage();
+        ShowPage showPage = new HomePage()
+            .openHomePage()
+            .getHeader()
+            .clickPosterItem()
+            .clickSpectaclesItem();
 
-        ShowPage showPage = homePage.selectShowType(showType);
+        showPage.clickShowTypeItem(showType);
 
-        Assertions.assertTrue(showPage.isTitleVisible(expectedTitle));
+        assertTrue(showPage.isTitleVisible(expectedTitle));
     }
 
-
+    private static Stream<Arguments> showTypesProvider() {
+        return Stream.of(
+            Arguments.of("Мюзикл", "Мюзикл в Минске"),
+            Arguments.of("Балет", "Балет в Минске"),
+            Arguments.of("Комедия", "Спектакль-комедия в Минске")
+        );
+    }
 }
