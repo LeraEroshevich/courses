@@ -3,9 +3,14 @@ package page;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
+import java.util.List;
+
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class ShowPage {
 
@@ -25,14 +30,31 @@ public class ShowPage {
     }
 
     public boolean isTitleVisible(String expectedTitle) {
+
         return showTitle.shouldBe(Condition.visible).has(Condition.exactText(expectedTitle));
     }
 
     public ShowPage closeAdvertisementIfPresent() {
-        SelenideElement advertisement = $("ja9c27383");
-        if (advertisement.exists()) {
-            advertisement.$("m38293a43").click();
+        By closeButtonLocator = By.xpath("//div[@Style='z-index: 999999;']//div[contains(@Style, 'background-image: url(\"data:image/svg+xml;charset=utf-8,')]");
+        int maxAttempts = 5;
+        int intervalMs = 1000;
+
+        for (int i = 0; i < maxAttempts; i++) {
+            List<WebElement> closeButtonElements = WebDriverRunner.getWebDriver().findElements(closeButtonLocator);
+            if (!closeButtonElements.isEmpty()) {
+                WebElement closeButton = closeButtonElements.get(0);
+                closeButton.click();
+                break;
+            }
+
+            try {
+                Thread.sleep(intervalMs);
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-        return Selenide.page(ShowPage.class);
+        
+        return this;
     }
 }
