@@ -13,9 +13,14 @@ public class Header {
         photoReportItem.click();
         return Selenide.page(DropDown.class);
     }
-
     public ShowPage clickPosterItem() {
         posterItem.click();
         return Selenide.page(ShowPage.class);
     }
+
+
+
+
+
+
 }

@@ -21,9 +21,10 @@ public class RelaxByTask1Test {
             .openHomePage()
             .getHeader()
             .clickPosterItem()
-            .clickSpectaclesItem();
-
-        showPage.clickShowTypeItem(showType);
+            .closeAdvertisementIfPresent()
+            .clickSpectaclesItem()
+            .closeAdvertisementIfPresent()
+            .clickShowTypeItem(showType);
 
         assertTrue(showPage.isTitleVisible(expectedTitle));
     }
