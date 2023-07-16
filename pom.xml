@@ -22,14 +22,35 @@
 		<module>lesson9</module>
 		<module>lesson10</module>
 		<module>lesson12</module>
+		<module>lesson14</module>
         <module>lesson13</module>
 		<module>lesson15</module>
 		<module>auto.lesson6.1</module>
 		<module>lesson16</module>
+		<module>auto.lesson7</module>
+		<module>auto.lesson11</module>
+		<module>auto.lesson10</module>
+		<module>auto.lesson9</module>
 		<module>auto.lesson8.1</module>
 	</modules>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit-platform-engine</artifactId>
+			<version>7.11.1</version>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>7.11.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite</artifactId>
+			<version>1.9.2</version>
+		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
@@ -46,6 +67,23 @@
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.3.2</version>
 		</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>5.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.15.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.20</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -71,6 +109,7 @@
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<cucumber.versin>7.11.1</cucumber.versin>
 	</properties>
 
 </project>
