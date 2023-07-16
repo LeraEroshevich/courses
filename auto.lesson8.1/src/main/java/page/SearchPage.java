@@ -1,26 +1,45 @@
 package page;
 
+import java.util.List;
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 public class SearchPage {
     private final WebDriver driver;
 
     public SearchPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    //@FindBy(xpath = "//table[@id='bx_3966226736_4192']//div[@class='description']//div[@class='rating']//table[@class='table-no-border']//div[@class='star-active star-empty']")
-    //private WebElement starsRatingLocator; Прообовала через этот локатор, но тест не проходит, пишет всегда
-    // Expected :5
-    // Actual   :1
-    // Пробовала другие локаторы, все равно не проходит, прошло только с cssSelector
     public int getFirstProductRating() {
-        WebElement ratingElement = driver.findElement(By.cssSelector(".rating .star-active[title='5']"));
+        List<WebElement> ratingElements = driver.findElements(By.xpath(
+            "//table[@id='bx_3966226736_4192']//div[@class='description']//div[@class='rating']//table[@class='table-no-border']//div[@class='star-active star-empty']/ancestor::td//tr//td//div[@title='5']"));
+        ratingElements = waitForCollectionSize(ratingElements, 5, 20, 1000);
+
+        if (ratingElements.size() == 0) {
+            throw new NoSuchElementException("Product rating element not found");
+        }
+
+        WebElement ratingElement = ratingElements.get(0);
         String ratingTitle = ratingElement.getAttribute("title");
         return Integer.parseInt(ratingTitle);
+    }
+
+    private List<WebElement> waitForCollectionSize(List<WebElement> elements, int expectedSize, int maxAttempts, int intervalMillis) {
+        int attempts = 0;
+        while (elements.size() != expectedSize && attempts < maxAttempts) {
+            try {
+                Thread.sleep(intervalMillis);
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            attempts++;
+            elements = driver.findElements(By.cssSelector(".rating .star-active[title='5']"));
+        }
+        return elements;
     }
 }

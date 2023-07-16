@@ -1,27 +1,20 @@
 package component;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
-public class SearchInput implements WebElementWrapper {
-    private final WebElement element;
+public class SearchInput {
 
-    public SearchInput(WebElement element) {
-        this.element = element;
+    private WebElement searchInput;
+
+    public SearchInput(WebElement searchInput) {
+        this.searchInput = searchInput;
     }
 
-    @Override
     public void enterSearchTerm(String searchTerm) {
-        element.sendKeys(searchTerm);
+        searchInput.sendKeys(searchTerm);
     }
 
-    @Override
     public void performSearch() {
-        element.sendKeys(Keys.ENTER);
-    }
-
-    @Override
-    public WebElement getWrappedElement() {
-        return element;
+        searchInput.submit();
     }
 }

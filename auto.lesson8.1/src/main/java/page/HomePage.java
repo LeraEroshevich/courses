@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
+    public static final String WEBSITE_URL = "https://electrolux-market.by/";
     private WebDriver driver;
     @FindBy(xpath = "//div[@class='table-menu']//a[@href='/sale/']")
     private WebElement promotionsTab;
@@ -37,7 +38,7 @@ public class HomePage {
     }
 
     public SearchPage searchForProduct(String searchTerm) {
-        SearchInput searchInput = new SearchInput(searchInputLocator);
+        SearchInput searchInput = new SearchInput(driver.findElement(By.xpath("//input[@name='q']")));
         searchInput.enterSearchTerm(searchTerm);
         searchInput.performSearch();
         return new SearchPage(driver);

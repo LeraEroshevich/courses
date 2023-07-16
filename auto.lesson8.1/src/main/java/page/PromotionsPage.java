@@ -11,14 +11,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PromotionsPage {
 
-    static By promotionImageLocator = By.xpath("//img[@class='img-responsive']");
-    private static WebDriver driver;
+    private By promotionImageLocator = By.xpath("//img[@class='img-responsive']");
+    private WebDriver driver;
 
     public PromotionsPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public static List<WebElement> getPromotionImages() {
+    public List<WebElement> getPromotionImages() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(promotionImageLocator));
         return driver.findElements(promotionImageLocator);
