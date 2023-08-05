@@ -13,11 +13,14 @@ public class SearchPage {
     public SearchPage(WebDriver driver) {
         this.driver = driver;
     }
+    private By firstProductRatingLocator = By.xpath("//span[contains(text(), 'Кухонный комбайн Electrolux EKM4200')]//ancestor::tbody//div[@class='star-active star-empty']");
+    private By starsLocator = By.xpath("//table[@id='bx_3966226736_4192']//div[@Class='description']//div[@Class='rating']//table[@Class='table-no-border']//div[@Class='star-active star-empty']");
+
+
 
     public int getFirstProductRating() {
-        List<WebElement> ratingElements = driver.findElements(By.xpath(
-            "//table[@id='bx_3966226736_4192']//div[@class='description']//div[@class='rating']//table[@class='table-no-border']//div[@class='star-active star-empty']/ancestor::td//tr//td//div[@title='5']"));
-        ratingElements = waitForCollectionSize(ratingElements, 5, 20, 1000);
+        List<WebElement> ratingElements = driver.findElements(firstProductRatingLocator);
+        ratingElements = waitForCollectionSize(ratingElements, 5, 30, 10000);
 
         if (ratingElements.size() == 0) {
             throw new NoSuchElementException("Product rating element not found");
@@ -38,7 +41,7 @@ public class SearchPage {
                 e.printStackTrace();
             }
             attempts++;
-            elements = driver.findElements(By.cssSelector(".rating .star-active[title='5']"));
+            elements = driver.findElements(firstProductRatingLocator);
         }
         return elements;
     }

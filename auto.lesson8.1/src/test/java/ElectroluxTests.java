@@ -15,7 +15,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.WebElement;
 
-@Execution(ExecutionMode.CONCURRENT)
 public class ElectroluxTests extends BaseTest {
 
     public static Object[][] getMenuItems() {
@@ -23,6 +22,7 @@ public class ElectroluxTests extends BaseTest {
             {"Микроволновые печи", "Микроволновые печи Electrolux"}};
     }
 
+    @Execution(ExecutionMode.CONCURRENT)
     @ParameterizedTest
     @MethodSource("getMenuItems")
     void checkMenuItemTest(String menuItem, String expectedTitle) {
