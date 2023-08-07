@@ -22,14 +22,31 @@
 			<id>ru</id>
 			<properties>
 				<base.url>https://devby.io/</base.url>
+				<profile>ru</profile>
 			</properties>
 		</profile>
 		<profile>
 			<id>by</id>
 			<properties>
 				<base.url>https://devby.io/be/</base.url>
+				<profile>by</profile>
 			</properties>
 		</profile>
 	</profiles>
+
+	<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>3.0.0-M5</version>
+			<configuration>
+				<systemPropertyVariables>
+					<profile.id>${profile}</profile.id>
+				</systemPropertyVariables>
+			</configuration>
+		</plugin>
+	</plugins>
+</build>
 
 </project>

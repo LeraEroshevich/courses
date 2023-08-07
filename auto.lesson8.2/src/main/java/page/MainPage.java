@@ -5,7 +5,7 @@ import component.Header;
 import org.openqa.selenium.WebDriver;
 
 public class MainPage {
-    public static final String DEV_URL = "https://devby.io/";
+    public static final String DEV_URL = System.getProperty("base.url", "https://devby.io/be/");
     private WebDriver driver;
 
     public MainPage(WebDriver driver) {
@@ -17,7 +17,7 @@ public class MainPage {
     }
 
     public MainPage open(String url) {
-        driver.get(url);
-        return new MainPage(driver);
+        driver.get(DEV_URL);
+        return this;
     }
 }

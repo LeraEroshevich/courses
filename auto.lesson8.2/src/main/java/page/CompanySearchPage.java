@@ -104,21 +104,37 @@ public class CompanySearchPage {
         int intervalMs = 1000;
 
         for (int i = 0; i < maxAttempts; i++) {
-            // Пытаемся найти кнопку закрытия объявления
             WebElement closeButton = findElement(closeButtonLocator);
 
-            // Если кнопка найдена, нажимаем на нее и выходим из цикла
             if (closeButton != null) {
-                closeButton.click();
-                break;
-            }
+                WebElement outerIframe = findElement(By.xpath("//iframe[@id='google_esf']"));
+                if (outerIframe != null) {
+                    driver.switchTo().frame(outerIframe);
 
-            // Если кнопка не найдена, ждем некоторое время перед следующей попыткой
-            try {
-                Thread.sleep(intervalMs);
-            }
-            catch (InterruptedException e) {
-                e.printStackTrace();
+                    WebElement innerIframe = findElement(By.xpath("//iframe[@id='aswift_2']"));
+                    if (innerIframe != null) {
+                        driver.switchTo().frame(innerIframe);
+
+                        WebElement secondInnerIframe = findElement(By.xpath("//iframe[@title='Advertisement']"));
+                        if (secondInnerIframe != null) {
+                            driver.switchTo().frame(secondInnerIframe);
+                        }
+                    }
+
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+                    wait.until(ExpectedConditions.elementToBeClickable(closeButton));
+
+                    closeButton.click();
+                    driver.switchTo().defaultContent();
+                    break;
+                }
+
+                try {
+                    Thread.sleep(intervalMs);
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -133,5 +149,4 @@ public class CompanySearchPage {
             return null;
         }
     }
-
 }
