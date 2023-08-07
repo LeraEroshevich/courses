@@ -26,7 +26,7 @@ public class SearchPage {
             throw new NoSuchElementException("Product rating element not found");
         }
 
-        WebElement ratingElement = ratingElements.get(0);
+        WebElement ratingElement = ratingElements.get(ratingElements.size() - 1);
         String ratingTitle = ratingElement.getAttribute("title");
         return Integer.parseInt(ratingTitle);
     }
