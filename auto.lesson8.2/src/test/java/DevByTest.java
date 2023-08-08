@@ -2,7 +2,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.stream.Stream;
 
-import component.Header;
 import page.AboutPage;
 import page.CompanySearchPage;
 import page.MainPage;
@@ -50,12 +49,12 @@ public class DevByTest extends BaseTest {
 
     @Test
     void visibilityAboutCompanyTest() {
-        Header mainPage = new MainPage(getDriver())
+        AboutPage aboutPage = new MainPage(getDriver())
             .open(MainPage.DEV_URL)
             .getHeader()
             .clickNavBar()
             .clickAboutItem();
-        AboutPage aboutPage = new AboutPage(getDriver());
+        
         assertTrue(aboutPage.isTitleVisible(), "Заголовок 'О проекте' не виден.");
     }
 }

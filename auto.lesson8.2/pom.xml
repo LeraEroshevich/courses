@@ -22,14 +22,12 @@
 			<id>ru</id>
 			<properties>
 				<base.url>https://devby.io/</base.url>
-				<profile>ru</profile>
 			</properties>
 		</profile>
 		<profile>
 			<id>by</id>
 			<properties>
 				<base.url>https://devby.io/be/</base.url>
-				<profile>by</profile>
 			</properties>
 		</profile>
 	</profiles>
@@ -42,7 +40,7 @@
 				<version>3.0.0-M5</version>
 				<configuration>
 					<systemPropertyVariables>
-						<profile.id>${profile}</profile.id>
+						<base.url>${base.url}</base.url>
 					</systemPropertyVariables>
 				</configuration>
 			</plugin>

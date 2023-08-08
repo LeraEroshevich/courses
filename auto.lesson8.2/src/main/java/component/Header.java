@@ -1,5 +1,6 @@
 package component;
 
+import page.AboutPage;
 import page.CompanySearchPage;
 
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ public class Header {
     private WebElement companyItem;
     @FindBy(xpath = "//div[@data-navbar-target='menu']//div[@class='menu__footer']//a[@href='https://devby.io/pages/about']")
     private WebElement aboutItem;
+
     public Header(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -30,9 +32,9 @@ public class Header {
         return new CompanySearchPage(driver);
     }
 
-    public Header clickAboutItem() {
+    public AboutPage clickAboutItem() {
         aboutItem.click();
-        return new Header(driver);
+        return new AboutPage(driver);
     }
 
 }

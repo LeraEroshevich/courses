@@ -16,7 +16,7 @@ public class MainPage {
         return new Header(driver);
     }
 
-    public MainPage open(String url) {
+    public MainPage open(String DEV_URL) {
         driver.get(DEV_URL);
         return this;
     }
