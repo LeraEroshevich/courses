@@ -99,36 +99,23 @@ public class CompanySearchPage {
     }
 
     public CompanySearchPage closeAdvertisementIfPresent() {
-        By closeButtonLocator = By.xpath("//div[@aria-label='Закрыть рекламу']");
         int maxAttempts = 5;
         int intervalMs = 1000;
 
         for (int i = 0; i < maxAttempts; i++) {
-            WebElement closeButton = findElement(closeButtonLocator);
-
-            if (closeButton != null) {
-                WebElement outerIframe = findElement(By.xpath("//iframe[@id='google_esf']"));
-                if (outerIframe != null) {
-                    driver.switchTo().frame(outerIframe);
-
-                    WebElement innerIframe = findElement(By.xpath("//iframe[@id='aswift_2']"));
-                    if (innerIframe != null) {
-                        driver.switchTo().frame(innerIframe);
-
-                        WebElement secondInnerIframe = findElement(By.xpath("//iframe[@title='Advertisement']"));
-                        if (secondInnerIframe != null) {
-                            driver.switchTo().frame(secondInnerIframe);
-                        }
+            boolean result = Boolean.parseBoolean(driver.findElement(By.xpath("//body")).getAttribute("aria-hidden"));
+            if (result) {
+                By iFrameLocator = By.xpath("//iframe[contains(@src, 'https://googleads.g.doubleclick.net/pagead/html/')]");
+                List<WebElement> iFrames = driver.findElements(iFrameLocator);
+                for (WebElement iFrame : iFrames) {
+                    if (iFrame.getAriaRole().equals("Iframe")) {
+                        driver.switchTo().frame(iFrame);
+                        WebElement subIframe = driver.findElement(By.xpath("//iframe[@title='Advertisement']"));
+                        driver.switchTo().frame(subIframe);
+                        driver.findElement(By.xpath("//div[@id='dismiss-button']")).click();
+                        driver.switchTo().defaultContent();
                     }
-
-                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-                    wait.until(ExpectedConditions.elementToBeClickable(closeButton));
-
-                    closeButton.click();
-                    driver.switchTo().defaultContent();
-                    break;
                 }
-
                 try {
                     Thread.sleep(intervalMs);
                 }
@@ -141,12 +128,4 @@ public class CompanySearchPage {
         return this;
     }
 
-    private WebElement findElement(By locator) {
-        try {
-            return driver.findElement(locator);
-        }
-        catch (org.openqa.selenium.NoSuchElementException e) {
-            return null;
-        }
-    }
 }
