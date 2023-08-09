@@ -32,6 +32,7 @@
 		<module>auto.lesson10</module>
 		<module>auto.lesson9</module>
 		<module>auto.lesson8.2</module>
+		<module>auto.lesson8.1</module>
 	</modules>
 
 	<dependencies>
